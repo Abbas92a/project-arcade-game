@@ -23,6 +23,7 @@ function Enemy(y) {
 
           if (this.x=== -100) {
             speedFactor = Math.random();
+            speedFactor= (speedFactor < 0.4) ? 0.4 : speedFactor;
           }
 
           this.x += (speedFactor * 400 * dt);
