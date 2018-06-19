@@ -4,14 +4,17 @@ let count = 1;
 function Enemy(y) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
-    this.x= -100,
-    this.y= y,
+    this.x= -100;
+    this.y= y;
+
+    // Update the enemy's position, required method for game
+    // Parameter: dt, a time delta between ticks
     this.update = (function(dt) {
         // You should multiply any movement by the dt parameter
         // which will ensure the game runs at the same speed for
         // all computers.
 
-        let speedFactor =1;
+        let speedFactor =1; //part of closure
 
         return function (dt) {
           if (this.x > 1000) {
@@ -21,41 +24,14 @@ function Enemy(y) {
           if (this.x=== -100) {
             speedFactor = Math.random();
           }
-          // console.log (this.x);
-          // console.log (this.x + speedFactor * 400 * dt);
-          // debugger;
+
           this.x += (speedFactor * 400 * dt);
         };
     })();
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
-};
-
-// Update the enemy's position, required method for game
-// Parameter: dt, a time delta between ticks
-
-// Enemy.prototype.update = (function(dt) {
-//     // You should multiply any movement by the dt parameter
-//     // which will ensure the game runs at the same speed for
-//     // all computers.
-//
-//     let speedFactor =1;
-//
-//     return function (dt) {
-//       if (this.x > 500) {
-//         this.x = -100;
-//       }
-//
-//       if (this.x=== -100) {
-//         speedFactor = Math.random();
-//       }
-//       // console.log (this.x);
-//       // console.log (this.x + speedFactor * 400 * dt);
-//       // debugger;
-//       this.x += (speedFactor * 400 * dt);
-//     };
-// })();
+}
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
@@ -66,11 +42,22 @@ Enemy.prototype.render = function() {
 // This class requires an update(), render() and
 // a handleInput() method.
 function Player(){
-  this.x= 300,
-  this.y= 50,
+  this.x= 202;
+  this.y= 405;
   this.sprite = 'images/char-boy.png';
-  this.update = function() {
-      ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+  this.handleInput = function (key) {
+    if (key === 'left' && this.x >= 10){
+        this.x -= 101;
+    } else if (key === 'up'  && this.y >= 10) {
+        this.y -= 83;
+    } else if (key === 'right' && this.x <= 400) {
+        this.x += 101;
+    } else if (key === 'down' && this.y <= 400) {
+        this.y += 83;
+    }
+  };
+  this.update = function() { //postponed until i found a job for it
+
   };
   this.render = function() {
       ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -87,7 +74,7 @@ let enemy3 = new Enemy(145);
 let enemy4 = new Enemy(145);
 let enemy5 = new Enemy(230);
 let enemy6 = new Enemy(230);
-// let allEnemies = [enemy1];
+// let allEnemies = [enemy1, enemy2];
 let allEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5, enemy6];
 
 let player = new Player();
