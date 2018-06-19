@@ -79,6 +79,26 @@ let allEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5, enemy6];
 
 let player = new Player();
 
+//check collisions by checking the postions of enemies relative to the position of the player
+function checkCollisions() {
+  if (player.y === 73 ) { //check if the player in the top rock row
+    if ( (enemy1.x >= (player.x - 80) && enemy1.x <= (player.x + 60)) || (enemy2.x >= (player.x - 80) && enemy2.x <= (player.x + 60)) ) {//if true then there is a collision & player restart
+        player.x = 202;
+        player.y = 405;
+      }
+    } else if (player.y === 156) { //check if the player in the middle rock row
+        if ((enemy3.x >= (player.x - 80) && enemy3.x <= (player.x + 60)) || (enemy4.x >= (player.x - 80) && enemy4.x <= (player.x + 60))) {//if true then there is a collision & player restart
+          player.x = 202;
+          player.y = 405;
+        }
+    } else if (player.y === 239) { //check if the player in the bottom rock row
+        if ((enemy5.x >= (player.x - 80) && enemy5.x <= (player.x + 60)) || (enemy6.x >= (player.x - 80) && enemy6.x <= (player.x + 60))) {//if true then there is a collision & player restart
+          player.x = 202;
+          player.y = 405;
+        }
+    }
+}
+
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
