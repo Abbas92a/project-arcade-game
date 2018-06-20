@@ -2,8 +2,6 @@ let count = 1;
 
 // Enemies our player must avoid
 function Enemy(y) {
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
     this.x= -100;
     this.y= y;
 
@@ -57,28 +55,34 @@ function Player(){
         this.y += 83;
     }
   };
-  this.update = function() { //postponed until i found a job for it
-
+  this.update = function(dt) { //check if the player reached the sea
+    if (this.y === -10) {
+      const congratsPage = document.querySelector('.winning-page'),
+            button = document.querySelector('button');
+      congratsPage.classList.remove('hide');
+      button.addEventListener('click', function () {
+        congratsPage.classList.add('hide');
+      });
+      this.x= 202;
+      this.y= 405;
+    };
   };
+
   this.render = function() {
       ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
   };
 }
 
-// Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
-
-let enemy1 = new Enemy(60);
-let enemy2 = new Enemy(60);
-let enemy3 = new Enemy(145);
-let enemy4 = new Enemy(145);
-let enemy5 = new Enemy(230);
-let enemy6 = new Enemy(230);
-// let allEnemies = [enemy1, enemy2];
-let allEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5, enemy6];
-
-let player = new Player();
+// instantiate all enemy objects.
+const enemy1 = new Enemy(60),
+    enemy2 = new Enemy(60),
+    enemy3 = new Enemy(145),
+    enemy4 = new Enemy(145),
+    enemy5 = new Enemy(230),
+    enemy6 = new Enemy(230),
+    allEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5, enemy6],
+    // instantiate all player object.
+    player = new Player();
 
 //check collisions by checking the postions of enemies relative to the position of the player
 function checkCollisions() {
@@ -101,7 +105,7 @@ function checkCollisions() {
 }
 
 // This listens for key presses and sends the keys to your
-// Player.handleInput() method. You don't need to modify this.
+// Player.handleInput() method.
 document.addEventListener('keyup', function(e) {
     var allowedKeys = {
         37: 'left',
