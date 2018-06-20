@@ -1,4 +1,3 @@
-let count = 1;
 
 // Enemies our player must avoid
 function Enemy(y) {
@@ -37,9 +36,7 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-// Now write your own player class
-// This class requires an update(), render() and
-// a handleInput() method.
+// Player construction function
 function Player(){
   this.x= 202;
   this.y= 405;
@@ -81,7 +78,7 @@ const enemy1 = new Enemy(60),
     enemy5 = new Enemy(230),
     enemy6 = new Enemy(230),
     allEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5, enemy6],
-    // instantiate all player object.
+    // instantiate a player object.
     player = new Player();
 
 //check collisions by checking the postions of enemies relative to the position of the player

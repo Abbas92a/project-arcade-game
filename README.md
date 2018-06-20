@@ -1,6 +1,14 @@
-frontend-nanodegree-arcade-game
-===============================
+# Arcade Game Project
+Interactive game where you get to challenge your focus.
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+## Table of Contents
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+* [Instructions](#instructions)
+
+## Instructions
+
+ Playing rules are very simple:
+  1. You are given a character which you have to protect from the bugs
+  2. Use 'up', 'down', 'left', 'right' to maneuver the board
+  3. Your goal should be to cross the stone road and reach the sea
+  4. If you are hit by a bug, you position will be reset
